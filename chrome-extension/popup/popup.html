@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Rikai On</title>
+  <link rel="stylesheet" href="../themes.css">
+  <style>
+    body {
+      width: 330px;
+      margin: 0;
+      padding: var(--rk-pad-md);
+      background-color: var(--rk-bg);
+      background-image: var(--rk-panel-pattern);
+      background-size: 24px 24px;
+      color: var(--rk-text);
+      font-family: var(--rk-font);
+      transition: background-color var(--rk-dur-med, 240ms) ease-in-out, color var(--rk-dur-med, 240ms) ease-in-out;
+    }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--rk-gap); padding-bottom: var(--rk-pad-sm); border-bottom: var(--rk-border-width) var(--rk-border-style) var(--rk-border); }
+    h1 { font-size: 14px; margin: 0; color: var(--rk-accent); text-transform: var(--rk-title-transform); letter-spacing: var(--rk-title-spacing); }
+    .top-actions, .mode-bar { display: flex; gap: var(--rk-gap); align-items: center; }
+    .mode-bar { margin-bottom: var(--rk-gap); }
+    p { font-size: 12px; color: var(--rk-muted); margin: 0 0 10px; }
+    .rk-btn {
+      background: var(--rk-surface);
+      border: 1px solid transparent;
+      color: var(--rk-text);
+      cursor: pointer;
+      padding: 5px 9px;
+      border-radius: var(--rk-btn-radius);
+      font-family: var(--rk-font);
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: var(--rk-btn-shadow);
+      transition: background-color var(--rk-dur-fast, 160ms) ease-in-out,
+        color var(--rk-dur-fast, 160ms) ease-in-out,
+        border-color var(--rk-dur-fast, 160ms) ease-in-out,
+        transform 140ms ease-in-out;
+    }
+    .rk-btn:hover { border-color: var(--rk-accent); background: var(--rk-elevated); }
+    .rk-btn:active { transform: scale(0.97); }
+    .rk-btn.is-active { background: var(--rk-accent); color: var(--rk-accent-contrast); border-color: transparent; }
+    .rk-btn.is-accent2 { width: 100%; margin-bottom: var(--rk-gap); padding: 7px; font-size: 12px; border-color: var(--rk-accent2); color: var(--rk-accent2); background: var(--rk-surface); }
+    .filter-bar { display: flex; align-items: center; gap: 6px; margin-bottom: var(--rk-gap); }
+    .filter-bar[hidden] { display: none; }
+    .filter-label { font-size: 11px; font-weight: 700; color: var(--rk-muted); white-space: nowrap; }
+    .rk-select {
+      flex: 1;
+      min-width: 0;
+      background: var(--rk-surface);
+      color: var(--rk-text);
+      border: 1px solid var(--rk-border);
+      border-radius: var(--rk-btn-radius);
+      padding: 4px 8px;
+      font-family: var(--rk-font);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .rk-select:hover { border-color: var(--rk-accent); }
+    .progress-wrap { margin-bottom: var(--rk-gap); }
+    .progress-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--rk-muted); margin-bottom: 4px; }
+    .progress-track { width: 100%; height: 7px; background: var(--rk-surface); border: none; border-radius: var(--rk-btn-radius); overflow: hidden; }
+    .progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--rk-accent), var(--rk-accent2)); transition: width 240ms ease-in-out; }
+    .list { display: flex; flex-direction: column; gap: var(--rk-gap); }
+    .song-row {
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      animation: rikaiFadeSlideIn var(--rk-dur-med, 240ms) ease-in-out;
+    }
+    .pill {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: var(--rk-gap);
+      background: var(--rk-surface);
+      border: 1px solid transparent;
+      color: var(--rk-text);
+      padding: var(--rk-pad-sm) 10px;
+      font-size: 13px;
+      line-height: 1.45;
+      cursor: pointer;
+      border-radius: var(--rk-row-radius);
+      font-family: var(--rk-font);
+      box-shadow: var(--rk-btn-shadow);
+      transition: background-color var(--rk-dur-fast, 160ms) ease-in-out,
+        border-color var(--rk-dur-fast, 160ms) ease-in-out,
+        transform 160ms ease-in-out;
+    }
+    .fav-item-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      font-size: 14px;
+      padding: 0 8px;
+      border-radius: var(--rk-row-radius);
+    }
+    .pill:hover { border-color: var(--rk-accent); background: var(--rk-elevated); transform: translateY(-1px); }
+    .pill:active { transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--rk-accent); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+  <div class="top-bar">
+    <h1>Rikai On // 理解ON</h1>
+    <div class="top-actions">
+      <a id="donate-btn" class="rk-btn" href="https://ko-fi.com/C0C62BIE0" target="_blank" rel="noopener noreferrer" title="Support me on Ko-fi" aria-label="Support me on Ko-fi" style="color:var(--rk-accent2);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></a>
+      <button id="sync-anki-btn" class="rk-btn" type="button" title="Sincronizar com o Anki" aria-label="Sincronizar com o Anki" style="color:var(--rk-accent);">↻</button>
+      <button id="toggle-enabled" class="rk-btn is-active" type="button" aria-pressed="true">ON</button>
+      <button id="open-settings" class="rk-btn" type="button" title="Configurações" aria-label="Abrir configurações">⚙</button>
+    </div>
+  </div>
+  <div class="mode-bar">
+    <button id="mode-mature" class="rk-btn is-active" type="button" aria-pressed="true" style="flex:1;padding:5px;">Comprehensible</button>
+    <button id="mode-leech" class="rk-btn" type="button" aria-pressed="false" style="flex:1;padding:5px;">Leeches + Difíceis</button>
+    <button id="mode-fav" class="rk-btn" type="button" aria-pressed="false" style="flex:1;padding:5px;">★ Favoritas</button>
+  </div>
+  <button id="open-playlist-btn" class="rk-btn is-accent2" type="button" hidden>▶ Abrir Playlist no YouTube</button>
+  <div id="artist-filter-wrap" class="filter-bar" hidden>
+    <label id="lbl-artist-filter" class="filter-label" for="artist-filter-select">Filtrar por artista</label>
+    <select id="artist-filter-select" class="rk-select" aria-label="Filtrar por artista"></select>
+  </div>
+  <div id="sync-progress-wrap" class="progress-wrap" hidden>
+    <div class="progress-meta">
+      <span id="sync-progress-label">Sincronizando...</span>
+      <span id="sync-progress-pct">0%</span>
+    </div>
+    <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sync-progress-role" class="progress-track">
+      <div id="sync-progress-fill" class="progress-fill"></div>
+    </div>
+  </div>
+  <p id="status" role="status" aria-live="polite">Loading...</p>
+  <div id="leech-list" class="list"></div>
+  </main>
+  <script src="../i18n.js"></script>
+  <script src="../theme-utils.js"></script>
+  <script src="../anki-ui-immersion.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Rikai On",
+  "version": "1.0.0",
+  "default_locale": "en",
+  "description": "__MSG_extDesc__",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "http://127.0.0.1:8765/*",
+    "http://localhost:8765/*",
+    "https://lrclib.net/*",
+    "https://music.163.com/*",
+    "https://mobileservice.kugou.com/*",
+    "https://krcs.kugou.com/*",
+    "https://lyrics.kugou.com/*",
+    "https://www.youtube.com/*",
+    "https://rss.marketingtools.apple.com/*",
+    "https://www.billboard-japan.com/*",
+    "https://itunes.apple.com/*",
+    "https://ja.wikipedia.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_popup": "popup/popup.html",
+    "default_title": "Rikai On — Music Mining"
+  },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["youtube-main.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["i18n.js", "theme-utils.js", "anki-ui-immersion.js", "content.js"],
+      "css": ["themes.css", "content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

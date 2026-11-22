@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Rikai On</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #f87171;
+      --link: #93c5fd;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--link);
+      text-decoration: none;
+    }
+    .nav-back:hover { text-decoration: underline; }
+    h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.65rem;
+      color: var(--accent);
+    }
+    .updated {
+      margin: 0 0 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    h2 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.15rem;
+      color: var(--text);
+    }
+    p, li {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    strong { color: var(--text); }
+    ul { padding-left: 1.25rem; }
+    a { color: var(--link); }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+    code {
+      background: var(--bg);
+      color: var(--text);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="Breadcrumb">
+      <a class="nav-back" href="./index.html">&larr; Rikai On Home</a>
+    </nav>
+    <header>
+      <h1>Privacy Policy for Rikai On</h1>
+      <p class="updated">Effective Date: November 22, 2026</p>
+    </header>
+
+    <p>
+      <strong>Rikai On</strong> ("the Extension") is designed with privacy first. We do not operate any backend
+      analytics, telemetry, or tracking servers, and we do not collect, sell, or share personal data.
+    </p>
+
+    <h2>1. Data Accessed and Stored Locally</h2>
+    <ul>
+      <li>
+        <strong>Anki Vocabulary Data:</strong> When you trigger a sync, the Extension communicates strictly with your
+        local AnkiConnect endpoint (<code>127.0.0.1:8765</code> or <code>localhost:8765</code>) to categorize Japanese
+        words into leech, hard, young, and mature lists. Your Anki data never leaves your computer and is cached solely
+        in <code>chrome.storage.local</code>.
+      </li>
+      <li>
+        <strong>User Preferences &amp; Personal Lists:</strong> Theme settings, interface language, manual known-word
+        marks, favorite songs, discovered YouTube artists, custom artist lists, per-video subtitle sync offsets, and
+        cached lyrics are stored exclusively in <code>chrome.storage.local</code>.
+      </li>
+    </ul>
+
+    <h2>2. External Network Requests</h2>
+    <ul>
+      <li>
+        <strong>Lyrics Providers (lrclib.net, kugou.com, music.163.com):</strong> Receives only the song/artist
+        search query needed to retrieve synchronized Japanese LRC lyrics.
+      </li>
+      <li>
+        <strong>YouTube (youtube.com):</strong> On YouTube tabs, reads the video title, channel/author metadata (via
+        public oEmbed), playback timestamp, and Japanese captions (only when external LRC lyrics are unavailable)
+        strictly to render and synchronize lyrics locally on <code>/watch</code> pages. Public search results are also
+        queried to resolve video IDs for discovered Japanese songs.
+      </li>
+      <li>
+        <strong>Japan Music Charts (itunes.apple.com, rss.marketingtools.apple.com, billboard-japan.com, ja.wikipedia.org):</strong>
+        Fetches public Japanese chart artist names when updating the built-in artist discovery pool.
+      </li>
+    </ul>
+
+    <h2>3. Data Sharing &amp; Retention</h2>
+    <p>
+      The Extension never sells user data, displays third-party ads, or transmits user profiles to external servers.
+      All locally stored preferences and caches can be cleared at any time by removing the Extension or clearing its
+      storage in Chrome.
+    </p>
+
+    <h2>4. Contact</h2>
+    <p>
+      For support or privacy inquiries, please open an issue on the
+      <a href="https://github.com/garciaguilherme/rikai-on" target="_blank" rel="noopener noreferrer">Rikai On GitHub repository</a>
+      or use the support contact listed on the Rikai On Chrome Web Store page.
+    </p>
+  </main>
+</body>
+</html>

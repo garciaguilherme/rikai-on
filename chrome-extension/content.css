@@ -1,0 +1,315 @@
+/* ==========================================================================
+   Rikai On // 理解音 — Content Styles (100% Tokenized via themes.css)
+   ========================================================================== */
+
+#jp-dojo-video-blur-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 35;
+  pointer-events: none;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+#jp-dojo-video-blur-band[data-blur-mode="bottom"] {
+  bottom: 54px;
+  top: auto;
+  height: 15%;
+}
+
+#jp-dojo-video-blur-band[data-blur-mode="top"] {
+  top: 0;
+  bottom: auto;
+  height: 15%;
+}
+
+#jp-dojo-video-blur-band[hidden] {
+  display: none;
+}
+
+#jp-dojo-video-subtitle {
+  position: absolute;
+  left: 50%;
+  bottom: 62px;
+  transform: translateX(-50%);
+  z-index: 45;
+  max-width: 86%;
+  padding: 9px 18px;
+  background-color: var(--rk-overlay-bg);
+  background-image: var(--rk-panel-pattern);
+  background-size: 24px 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px var(--rk-border-style, solid) var(--rk-accent);
+  border-radius: var(--rk-radius);
+  color: var(--rk-overlay-text);
+  font-family: var(--rk-font);
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 700;
+  letter-spacing: var(--rk-title-spacing);
+  text-align: center;
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+  box-shadow: var(--rk-overlay-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: background-color var(--rk-dur-med, 240ms) ease-in-out,
+    color var(--rk-dur-med, 240ms) ease-in-out,
+    border-color var(--rk-dur-med, 240ms) ease-in-out,
+    border-radius var(--rk-dur-med, 240ms) ease-in-out,
+    box-shadow var(--rk-dur-med, 240ms) ease-in-out;
+}
+
+#jp-dojo-video-subtitle[hidden] {
+  display: none;
+}
+
+#jp-dojo-mining-panel {
+  background-color: var(--rk-bg);
+  background-image: var(--rk-panel-pattern);
+  background-size: 24px 24px;
+  color: var(--rk-text);
+  border: var(--rk-border-width) var(--rk-border-style) var(--rk-border);
+  border-radius: var(--rk-radius);
+  padding: var(--rk-pad-md);
+  margin-bottom: 16px;
+  font-family: var(--rk-font);
+  box-shadow: var(--rk-panel-shadow);
+  position: relative;
+  overflow: hidden;
+  animation: rikaiFadeSlideIn var(--rk-dur-med, 240ms) ease-in-out;
+  transition: background-color var(--rk-dur-med, 240ms) ease-in-out,
+    color var(--rk-dur-med, 240ms) ease-in-out,
+    border-color var(--rk-dur-med, 240ms) ease-in-out,
+    border-radius var(--rk-dur-med, 240ms) ease-in-out,
+    box-shadow var(--rk-dur-med, 240ms) ease-in-out;
+}
+
+#jp-dojo-mining-panel::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: calc(var(--rk-pad-md) * -1) calc(var(--rk-pad-md) * -1) var(--rk-gap);
+  background: var(--rk-header-accent);
+}
+
+.jp-dojo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rk-gap);
+  border-bottom: var(--rk-border-width) var(--rk-border-style) var(--rk-border);
+  padding-bottom: var(--rk-gap);
+  margin-bottom: var(--rk-gap);
+}
+
+.jp-dojo-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rk-accent);
+  text-transform: var(--rk-title-transform);
+  letter-spacing: var(--rk-title-spacing);
+}
+
+.jp-dojo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rk-gap);
+  margin-bottom: var(--rk-gap);
+}
+
+.jp-dojo-btn {
+  background: var(--rk-elevated);
+  color: var(--rk-text);
+  border: 1px solid transparent;
+  border-radius: var(--rk-btn-radius);
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--rk-font);
+  box-shadow: var(--rk-btn-shadow);
+  cursor: pointer;
+  transition: background-color var(--rk-dur-fast, 160ms) ease-in-out,
+    color var(--rk-dur-fast, 160ms) ease-in-out,
+    border-color var(--rk-dur-fast, 160ms) ease-in-out,
+    transform 140ms ease-in-out;
+}
+
+.jp-dojo-btn:hover {
+  background: var(--rk-surface);
+  border-color: var(--rk-accent);
+}
+
+.jp-dojo-btn:active {
+  transform: scale(0.97);
+}
+
+.jp-dojo-btn.is-active {
+  background: var(--rk-accent);
+  color: var(--rk-accent-contrast);
+  border-color: transparent;
+}
+
+.jp-dojo-sync-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: var(--rk-gap);
+  padding: 5px 8px;
+  background: var(--rk-surface);
+  border: 1px solid var(--rk-border);
+  border-radius: var(--rk-row-radius);
+}
+
+.jp-dojo-sync-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rk-muted);
+  margin-right: 2px;
+}
+
+.jp-dojo-btn.is-sm {
+  padding: 3px 7px;
+  font-size: 11px;
+}
+
+.jp-dojo-source-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: var(--rk-gap);
+  padding: 4px 8px;
+  background: var(--rk-surface);
+  border: 1px solid var(--rk-border);
+  border-radius: var(--rk-row-radius);
+  font-size: 11px;
+  color: var(--rk-muted);
+}
+
+.jp-dojo-source-bar[hidden] {
+  display: none;
+}
+
+.jp-dojo-source-name {
+  color: var(--rk-text);
+  font-weight: 700;
+}
+
+.jp-dojo-source-meta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jp-dojo-lyrics {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--rk-gap) * 0.65);
+}
+
+.jp-dojo-line {
+  text-align: left;
+  background: var(--rk-surface);
+  color: var(--rk-muted);
+  border: 1px solid transparent;
+  border-radius: var(--rk-row-radius);
+  padding: var(--rk-pad-sm) 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--rk-gap);
+  align-items: baseline;
+  user-select: text;
+  -webkit-user-select: text;
+  transition: background-color var(--rk-dur-med, 240ms) ease-in-out,
+    color var(--rk-dur-med, 240ms) ease-in-out,
+    border-color var(--rk-dur-fast, 160ms) ease-in-out;
+}
+
+.jp-dojo-time-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--rk-accent);
+  cursor: pointer;
+}
+
+.jp-dojo-text {
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+.jp-dojo-word {
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color var(--rk-dur-fast, 160ms) ease-in-out,
+    color var(--rk-dur-fast, 160ms) ease-in-out;
+}
+
+.jp-dojo-word:hover {
+  outline: 1px dotted var(--rk-muted);
+}
+
+.jp-dojo-hit {
+  background: var(--rk-leech-bg);
+  border-bottom: 2px solid var(--rk-leech-border);
+  color: var(--rk-leech-text);
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.jp-dojo-hit-hard {
+  background: var(--rk-hard-bg);
+  border-bottom: 2px solid var(--rk-hard-border);
+  color: var(--rk-hard-text);
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.jp-dojo-hit-young {
+  background: var(--rk-young-bg);
+  border-bottom: 1px dashed var(--rk-young-border);
+  color: var(--rk-young-text);
+  padding: 0 1px;
+}
+
+.jp-dojo-hit-mature,
+.jp-dojo-hit-manual {
+  background: var(--rk-mature-bg);
+  border-bottom: 1px solid var(--rk-mature-border);
+  color: var(--rk-mature-text);
+  padding: 0 1px;
+}
+
+.jp-dojo-line.is-current {
+  background: var(--rk-elevated);
+  border-color: transparent;
+  border-left: var(--rk-active-border-left);
+  color: var(--rk-text);
+}
+
+#jp-dojo-mining-panel :focus-visible,
+#jp-dojo-video-subtitle :focus-visible {
+  outline: 2px solid var(--rk-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #jp-dojo-mining-panel *,
+  #jp-dojo-video-subtitle * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
