@@ -1,5 +1,7 @@
 # Rikai On // 理解ON
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C62BIE0)
+
 Synchronize Japanese song lyrics on YouTube with real-time **AnkiConnect** vocabulary highlights (`Leech`, `Hard`, `Young`, `Mature`), comprehension stats, favorites, and smart Japanese music mining.
 
 - **Homepage:** https://garciaguilherme.github.io/rikai-on/
